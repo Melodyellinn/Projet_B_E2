@@ -14,6 +14,8 @@ data = pd.read_csv("data/data.csv")
 
 with open('True_model_RandomForest.pkl', 'rb') as file:
     model = pickle.load(file)
+    
+model_prediction = pd.DataFrame()
 
 # Define the target and split data for train_test
 y = data['Bankrupt?']
@@ -31,12 +33,10 @@ def predict(prediction):
     #     y_pred = 'Non Faillite'
     # elif y_pred == 1:
     #     y_pred = 'Attention risque de Faillite'
-
+    model_prediction['Real_Value'] = y_test
+    model_prediction['Prediction_Value'] = y_pred
+    model_prediction.append(model_prediction)
     return prediction
-
-model_prediction = pd.DataFrame()
-model_prediction['Real_Value'] = y_test
-model_prediction['Prediction_Value'] = predict
 
 #conf_mat = confusion_matrix(y_test, predict)
 #sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
