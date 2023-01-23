@@ -48,12 +48,12 @@ with row_2_col_2:
         st.success(f'The predictions were successful')
         st.dataframe(model_prediction)
 
-with row_1_col_1:
-#     st.title('Confusion Matrix')
-        conf_mat = confusion_matrix(y_test, y_pred)
-        sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
-        plt.xlabel("Predicted")
-        plt.ylabel("Actual")
-        st.write('test')
-        if st.button('Report'):
-            st.plotly_chart(conf_mat, use_container_width=False)
+# with row_1_col_1:
+# #     st.title('Confusion Matrix')
+#         conf_mat = confusion_matrix(y_test, y_pred)
+#         sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
+#         plt.xlabel("Predicted")
+#         plt.ylabel("Actual")
+#         st.write('test')
+#         if st.button('Report'):
+#             st.plotly_chart(conf_mat, use_container_width=False)
