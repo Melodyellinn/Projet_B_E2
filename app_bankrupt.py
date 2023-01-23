@@ -9,6 +9,7 @@ import imblearn
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
+import pyarrow as pa
 
 ## Import pickle & Data ##
 data = pd.read_csv("data/new_data.csv")
