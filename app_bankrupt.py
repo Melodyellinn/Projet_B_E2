@@ -11,13 +11,13 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
 
 ## Import pickle & Data ##
-data = pd.read_csv("data/data.csv")
+data = pd.read_csv("data/new_data.csv")
 with open('True_model_RandomForest.pkl', 'rb') as file:
     model = pickle.load(file)
 
 # Define the target and split data for train_test
-y = data['Bankrupt?']
-X = data.drop('Bankrupt?', axis=1)
+y = data['Bankrupt?_x']
+X = data.drop('Bankrupt?_x', axis=1)
 X_train, X_test, y_train, y_test = train_test_split(X, y,
                                                     test_size= 0.3,
                                                     random_state=0)
