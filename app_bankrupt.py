@@ -47,7 +47,7 @@ with row_1_col_1:
         
 row_1_margin_1, row_2_col_2, row_3_col_3, row_1_margin_2 = st.columns((.2, 2.5, 8.5,.2))
 with row_2_col_2:
-    st.write('test')
+    st.write("Results Confusion Matrix for model's predictions")
     fig = plt.figure()
     conf_mat = confusion_matrix(y_test, predict(X_test))
     sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
