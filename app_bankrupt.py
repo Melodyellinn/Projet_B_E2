@@ -25,18 +25,18 @@ X_train, X_test, y_train, y_test = train_test_split(X, y,
                                                     random_state=0)
 
 ### define predict def ###   
-def predict(prediction):
+def predict(X_test):
     y_pred = model.predict(X_test)
-    return prediction
+    return y_pred
 
 #     # if y_pred == 0:
 #     #     y_pred = 'Non Faillite'
 #     # elif y_pred == 1:
 #     #     y_pred = 'Attention risque de Faillite'
-y_pred = model.predict(X_test)
+
 model_prediction = pd.DataFrame()
 model_prediction['Real_Value'] = y_test
-model_prediction['Prediction_Value'] = predict
+model_prediction['Prediction_Value'] = predict(X_test)
 
 ### APP FRONT ###
 row_1_margin_1, row_1_col_1, row_2_col_2, row_1_margin_2 = st.columns((.2, 2.5, 4.5,.2))
