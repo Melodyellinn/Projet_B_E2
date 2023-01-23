@@ -37,6 +37,6 @@ model_prediction['Prediction_Value'] = predict
 
 st.title('Bankrupt or not Bankrupt ?')
 if st.button('Predict'):
-    bankrupt = predict(y_test)
+    bankrupt = predict
     st.success(f'The predicted success')
     st.dataframe(model_prediction)
