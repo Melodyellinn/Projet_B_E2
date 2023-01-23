@@ -1,10 +1,13 @@
 
 import pickle
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
+import seaborn as sns
+import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 import imblearn
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix
 
 ## Import pickle & Data ##
 data = pd.read_csv("data/data.csv")
@@ -35,8 +38,20 @@ model_prediction = pd.DataFrame()
 model_prediction['Real_Value'] = y_test
 model_prediction['Prediction_Value'] = predict
 
+### APP FRONT ###
+row_1_margin_1, row_2_col_1, row_1_margin_2 = st.columns((.2,3.5,.2))
+
 st.title('Bankrupt or not Bankrupt ?')
 if st.button('Predict'):
     bankrupt = predict
     st.success(f'The predicted success')
     st.dataframe(model_prediction)
+
+with row_2_col_1:
+    st.title('Confusion Matrix')
+    st.write('test')
+    conf_mat = confusion_matrix(y_test, predict)
+    sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
+    plt.xlabel("Predicted")
+    plt.ylabel("Actual")
+    st.plotly_chart(conf_mat, use_container_width=False)
