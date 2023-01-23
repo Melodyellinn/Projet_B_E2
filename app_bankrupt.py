@@ -38,20 +38,21 @@ model_prediction = pd.DataFrame()
 model_prediction['Real_Value'] = y_test
 model_prediction['Prediction_Value'] = predict
 
+#conf_mat = confusion_matrix(y_test, predict)
+#sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
+#plt.xlabel("Predicted")
+#plt.ylabel("Actual")
+
 ### APP FRONT ###
-row_1_margin_1, row_2_col_1, row_1_margin_2 = st.columns((.2,3.5,.2))
+row_1_margin_1, row_1_col_1, row_2_col_2, row_1_margin_2 = st.columns((.2, 3.5, 2.5,.2))
+with row_1_col_1:
+    st.title('Bankrupt or not Bankrupt ?')
+    if st.button('Predict'):
+        bankrupt = predict
+        st.success(f'The predicted success')
+        st.dataframe(model_prediction)
 
-st.title('Bankrupt or not Bankrupt ?')
-if st.button('Predict'):
-    bankrupt = predict
-    st.success(f'The predicted success')
-    st.dataframe(model_prediction)
-
-with row_2_col_1:
-    st.title('Confusion Matrix')
-    st.write('test')
-    conf_mat = confusion_matrix(y_test, predict)
-    sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
-    plt.xlabel("Predicted")
-    plt.ylabel("Actual")
-    st.plotly_chart(conf_mat, use_container_width=False)
+# with row_2_col_2:
+#     st.title('Confusion Matrix')
+#     st.write('test')
+#     st.plotly_chart(conf_mat, use_container_width=False)
