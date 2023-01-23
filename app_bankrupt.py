@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
+import numpy as np
 import imblearn
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -11,7 +12,6 @@ from sklearn.metrics import confusion_matrix
 
 ## Import pickle & Data ##
 data = pd.read_csv("data/data.csv")
-
 with open('True_model_RandomForest.pkl', 'rb') as file:
     model = pickle.load(file)
 
