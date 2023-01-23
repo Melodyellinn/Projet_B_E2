@@ -29,7 +29,8 @@ def predict(prediction):
     y_pred = model.predict(X_test)
     model_prediction['Real_Value'] = y_test
     model_prediction['Prediction_Value'] = y_pred
-    
+    model_prediction.append(y_test)
+    model_prediction.append(y_pred)
     return prediction
 
 #     # if y_pred == 0:
@@ -49,7 +50,7 @@ with row_1_col_1:
     if st.button('Predict'):
         pred = predict
         st.success(f'The predictions were successful')
-        st.dataframe(model_prediction)
+        st.dataframe(pred)
 
 # with row_2_col_2:
 #     st.title('Confusion Matrix')
