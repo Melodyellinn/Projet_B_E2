@@ -39,7 +39,7 @@ model_prediction['Real_Value'] = y_test
 model_prediction['Prediction_Value'] = predict
 
 ### APP FRONT ###
-row_1_margin_1, row_1_col_1, row_2_col_2, row_1_margin_2 = st.columns((.2, 4.5, 2.5,.2))
+row_1_margin_1, row_1_col_1, row_2_col_2, row_1_margin_2 = st.columns((.2, 2.5, 4.5,.2))
 with row_1_col_1:
     st.title('Bankrupt or not Bankrupt ?')
 with row_2_col_2:
