@@ -37,14 +37,15 @@ model_prediction['Real_Value'] = y_test
 model_prediction['Prediction_Value'] = predict(X_test)
 
 ### APP FRONT ###
-row_1_margin_1, row_1_col_1, row_2_col_2, row_1_margin_2 = st.columns((.2, 4.5, 2.5,.2))
+row_1_margin_1, row_1_col_1, row_1_margin_2 = st.columns((.2, 4.5, .2))
 with row_1_col_1:
     st.title('Bankrupt or not Bankrupt ?')
     if st.button('Predict'):
         pred = predict
         st.success(f'The predictions were successful')
         st.dataframe(model_prediction)
-
+        
+row_1_margin_1, row_2_col_2, row_3_col_3, row_1_margin_2 = st.columns((.2, 2.5, 8.5,.2))
 with row_2_col_2:
     st.write('test')
     fig = plt.figure()
@@ -54,5 +55,6 @@ with row_2_col_2:
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
     
+with row_3_col_3:    
     if st.button('Report'):
         st.pyplot(fig)
