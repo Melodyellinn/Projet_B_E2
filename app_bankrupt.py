@@ -35,7 +35,6 @@ def predict(prediction):
     #     y_pred = 'Attention risque de Faillite'
     model_prediction['Real_Value'] = y_test
     model_prediction['Prediction_Value'] = y_pred
-    model_prediction.append(model_prediction)
     return prediction
 
 #conf_mat = confusion_matrix(y_test, predict)
