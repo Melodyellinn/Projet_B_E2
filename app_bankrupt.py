@@ -50,6 +50,7 @@ row_1_margin_1, row_1_col_1, row_2_col_2, row_1_margin_2 = st.columns((.2, 4.5, 
 with row_1_col_1:
     st.title('Bankrupt or not Bankrupt ?')
     if st.button('Predict'):
+        pred = y_pred
         st.success(f'The predictions were successful')
         st.dataframe(model_prediction)
 
