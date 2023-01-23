@@ -6,11 +6,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import imblearn
+from plotly.subplots import make_subplots
+import plotly.express
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_curve,auc,\
-    confusion_matrix, classification_report
-import pyarrow as pa
+from sklearn.metrics import confusion_matrix
 
 ## Import pickle & Data ##
 data = pd.read_csv("data/new_data.csv")
@@ -47,13 +47,15 @@ with row_2_col_2:
         pred = predict
         st.success(f'The predictions were successful')
         st.dataframe(model_prediction)
-
-# with row_1_col_1:
-# #     st.title('Confusion Matrix')
-#         conf_mat = confusion_matrix(y_test, y_pred)
-#         sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
-#         plt.xlabel("Predicted")
-#         plt.ylabel("Actual")
-#         st.write('test')
-#         if st.button('Report'):
-#             st.plotly_chart(conf_mat, use_container_width=False)
+        
+row_1_margin_1, row_3_col_3, row_1_margin_2 = st.columns((.2, 4.5,.2))
+with row_3_col_3:
+#     st.title('Confusion Matrix')
+        conf_mat = confusion_matrix(y_test, predict(X_test))
+        sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
+        plt.title("Confusion matrix")
+        plt.xlabel("Predicted")
+        plt.ylabel("Actual")
+        st.write('test')
+        if st.button('Report'):
+            st.plotly_chart(conf_mat, use_container_width=False)
