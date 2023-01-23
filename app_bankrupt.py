@@ -29,8 +29,6 @@ def predict(prediction):
     y_pred = model.predict(X_test)
     model_prediction['Real_Value'] = y_test
     model_prediction['Prediction_Value'] = y_pred
-    model_prediction.append(y_test)
-    model_prediction.append(y_pred)
     return prediction
 
 #     # if y_pred == 0:
