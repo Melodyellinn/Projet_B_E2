@@ -24,20 +24,19 @@ X_train, X_test, y_train, y_test = train_test_split(X, y,
 ### define predict def ###   
 def predict(prediction):
     y_pred = model.predict(X_test)
-    if y_pred == 'Non Faillite':
-        y_pred = 0
-    elif y_pred == 'Attention risque de Faillite':
-        y_pred = 1
+    if y_pred == 0:
+        y_pred = 'Non Faillite'
+    elif y_pred == 1:
+        y_pred = 'Attention risque de Faillite'
 
     return prediction
-
-st.title('Bankrupt or not Bankrupt ?')
-
-if st.button('Predict'):
-    bankrupt = predict(y_test)
-    st.success(f'The predicted success')
 
 model_prediction = pd.DataFrame()
 model_prediction['Real_Value'] = y_test
 model_prediction['Prediction_Value'] = predict
-st.dataframe(model_prediction)
+
+st.title('Bankrupt or not Bankrupt ?')
+if st.button('Predict'):
+    bankrupt = predict(y_test)
+    st.success(f'The predicted success')
+    st.dataframe(model_prediction)
