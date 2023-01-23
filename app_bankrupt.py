@@ -46,11 +46,13 @@ with row_1_col_1:
         st.dataframe(model_prediction)
 
 with row_2_col_2:
+    st.write('test')
+    fig = plt.figure()
+    conf_mat = confusion_matrix(y_test, predict(X_test))
+    sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
+    plt.title("Confusion matrix")
+    plt.xlabel("Predicted")
+    plt.ylabel("Actual")
+    
     if st.button('Report'):
-        conf_mat = confusion_matrix(y_test, predict(X_test))
-        sns.heatmap(conf_mat, annot=True, fmt="d", cmap="Reds")
-        plt.title("Confusion matrix")
-        plt.xlabel("Predicted")
-        plt.ylabel("Actual")
-        st.write('test')
-        plt.show()
+        st.pyplot(fig)
